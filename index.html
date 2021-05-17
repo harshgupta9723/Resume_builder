@@ -1,46 +1,51 @@
 <!DOCTYPE html>
+
 <html>
-<body>
+    
+    <body>
 
-<h1 id="title">Resume  Form</h1>
+        <h1 id="title">Resume  Form</h1>
 
-<form>
+        <form>
 
-  <label for="fname">First name:</label><br>
-  <input type="text" name="fname"><br>
-  
-  <label for="lname">Last name:</label><br>
-  <input type="text" name="lname"><br><br>
+            <label for="fname">First name:</label><br>
+            <input type="text" name="fname"><br>
 
-  <label for="gender">Gender:</label>
+            <label for="lname">Last name:</label><br>
+            <input type="text" name="lname"><br><br>
 
-  <input type="radio" id="male" value="male" name="gender">
-  <label for="male">male</label>
+            <label for="gender">Gender:</label>
 
-  <input type="radio" id="female" value="female" name="gender">
-  <label for="female">female</label><br>
+            <input type="radio" id="male" value="male" name="gender">
+            <label for="male">male</label>
 
-  <label for="birthday">Birthday:</label>
-  <input type="date" id="birthday" name="birthday"><br><br>
+            <input type="radio" id="female" value="female" name="gender">
+            <label for="female">female</label><br>
 
-  <label for="pincode">pincode:</label>
-  <input type="text" id="pin" value="pincode" name="pincode" required minlength="6" maxlength="6" size="10"><br><br>
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" name="birthday"><br><br>
 
-  <label for="address">address:</label>
-  <input type="text" id="add" value="address" name="address" required minlength="20" maxlength="6" size="10"><br><br>
+            <label for="pincode">pincode:</label>
+            <input type="text" id="pin" value="pincode" name="pincode" required minlength="6" maxlength="6" size="10"><br><br>
 
-  <label for="contact_number">contact:</label>
-  <input type="number" id="contact" value="contact_number" name="contact_number" required minlength="11" maxlength="6" size="10"><br><br>
+            <label for="address">address:</label>
+            <input type="text" id="add" value="address" name="address" required minlength="20" maxlength="6" size="10"><br><br>
 
-  <label for="email_id">email:</label>
-  <input type="text" id="email" value="email_id" name="email_id" required minlength="11" maxlength="6" size="10"><br><br>
+            <label for="contact_number">contact:</label>
+            <input type="number" id="contact" value="contact_number" name="contact_number" required minlength="11" maxlength="6" size="10"><br><br>
 
-  <select>
-    <option disabled selected value>--</option>
-    <option>Option 1</option>
-  </select><br><br>
+            <label for="email_id">email:</label>
+            <input type="text" id="email" value="email_id" name="email_id" required minlength="11" maxlength="6" size="10"><br><br>
 
-</form>
+            <select>
+                <option disabled selected value>--</option>
+                <option>Option 1</option>
+            </select><br><br>
 
-</body>
+        </form>
+
+        <button type="submit" form="nameform" value="Submit">Submit</button>
+
+    </body>
+
 </html>
