@@ -7,6 +7,8 @@ import (
 )
 
 func homePage(w http.ResponseWriter, r *http.Request) {
+
+	// add post method
 	fmt.Fprintf(w, "Welcome to the HomePage!")
 	fmt.Println("Endpoint Hit: homePage")
 }
