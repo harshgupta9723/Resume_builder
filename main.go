@@ -17,9 +17,11 @@ type Resume struct {
 	emailId       string `json:"emailId"`
 }
 
-func formValidator(resume Resume) {
+// func formValidator() {
 
-}
+// 	x := r.Form
+// 	fmt.Println(x)
+// }
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 
@@ -28,20 +30,17 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	fmt.Println("Endpoint Hit: homePage")
 
-	for _, value := range r.Form {
-		resumeForm = append(resumeForm, Resume{
-			firstName:     value.firstname,
-			lastName:      value.lastname,
-			gender:        value.gender,
-			address:       value.address,
-			contactNumber: value.contact_number,
-			emailId:       value.email_id,
-			birthday:      value.birthday,
-			pincode:       value.pincode,
-		})
+	resumeData := Resume{
+		r.Form["adderrs"],
+		r.Form["birthday"],
+		r.Form["contact_number"],
+		r.Form["email_id"],
+		r.Form["firstname"],
+		r.Form["lastname"],
+		r.Form["pincode"],
+		r.Form["gender"],
 	}
-	fmt.Println(resumeForm)
-
+	fmt.Println(resumeData)
 }
 
 func handleRequests() {
