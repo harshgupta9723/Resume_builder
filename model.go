@@ -1,4 +1,4 @@
-package model
+package main
 
 type Resume struct {
 	firstName     string `json:"firstName"`
@@ -11,4 +11,6 @@ type Resume struct {
 	emailId       string `json:"emailId"`
 }
 
-var resume []Resume
+func (r *Resume) TableName() string {
+	return "resume"
+}

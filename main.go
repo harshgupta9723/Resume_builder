@@ -7,52 +7,37 @@ import (
 )
 
 type Resume struct {
-	firstName     string
-	lastName      string
-	gender        string
-	birthday      string
-	pincode       string
-	address       string
-	contactNumber string
-	emailId       string
+	firstName     string `json:"firstName"`
+	lastName      string `json:"lastName"`
+	gender        string `json:"gender"`
+	birthday      string `json:"birthday"`
+	pincode       string `json:"pincode"`
+	address       string `json:"address"`
+	contactNumber string `json:"contactNumber"`
+	emailId       string `json:"emailId"`
 }
 
-// func formValidator() {
-
-// 	x := r.Form
-// 	fmt.Println(x)
-// }
+func storeData(resumeData Resume) {
+	fmt.Println(resumeData)
+}
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 
 	r.ParseForm()
 	fmt.Println("Endpoint Hit: homePage")
 
-	address := r.Form["address"]
-	birthday := r.Form["birthday"]
-	contact := r.Form["contact_number"]
-	email := r.Form["email_id"]
-	firstname := r.Form["firstname"]
-	lastname := r.Form["lastname"]
-	pincode := r.Form["pincode"]
-	gender := r.Form["gender"]
-	fmt.Println(address, birthday, contact, email, firstname, lastname, pincode, gender)
+	resumeData := Resume{
+		address:       r.Form["address"][0],
+		birthday:      r.Form["birthday"][0],
+		contactNumber: r.Form["contact_number"][0],
+		emailId:       r.Form["email_id"][0],
+		firstName:     r.Form["firstname"][0],
+		lastName:      r.Form["lastname"][0],
+		pincode:       r.Form["pincode"][0],
+		gender:        r.Form["gender"][0],
+	}
 
-	// rawData := r.Form
-
-	// for _, details := range rawData {
-	// 	tagsList = append(tagsList, Resume{
-	// 		address:       details.address,
-	// 		birthday:      details.birthday,
-	// 		contactNumber: details.contact,
-	// 		emailId:       details.email_id,
-	// 		firstName:     details.firstname,
-	// 		lastName:      details.lastname,
-	// 		pincode:       details.pincpde,
-	// 		gender:        details.gender,
-	// 	})
-	// }
-
+	storeData(resumeData)
 }
 
 func handleRequests() {
