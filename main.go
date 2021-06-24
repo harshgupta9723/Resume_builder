@@ -1,50 +1,42 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
-type Resume struct {
-	FirstName     string `json:"firstName"`
-	LastName      string `json:"lastName"`
-	Gender        string `json:"gender"`
-	Birthday      string `json:"birthday"`
-	Pincode       string `json:"pincode"`
-	Address       string `json:"address"`
-	ContactNumber string `json:"contactNumber"`
-	EmailId       string `json:"emailId"`
-}
-
-func StoreData(resumeData Resume) {
-	fmt.Println(resumeData)
-}
-
-func HomePage(w http.ResponseWriter, r *http.Request) {
-
-	r.ParseForm()
-	fmt.Println("Endpoint Hit: homePage")
-
-	ResumeData := Resume{
-		Address:       r.Form["address"][0],
-		Birthday:      r.Form["birthday"][0],
-		ContactNumber: r.Form["contact_number"][0],
-		EmailId:       r.Form["email_id"][0],
-		FirstName:     r.Form["firstname"][0],
-		LastName:      r.Form["lastname"][0],
-		Pincode:       r.Form["pincode"][0],
-		Gender:        r.Form["gender"][0],
-	}
-
-	StoreData(ResumeData)
-}
-
-func HandleRequests() {
-	http.HandleFunc("/submit_resume", HomePage)
-	log.Fatal(http.ListenAndServe(":5050", nil))
-}
+var router *gin.Engine
 
 func main() {
-	HandleRequests()
+
+	// Set the router as the default one provided by Gin
+	router = gin.Default()
+
+	// Process the templates at the start so that they don't have to be loaded
+	// from the disk again. This makes serving HTML pages very fast.
+	router.LoadHTMLGlob("templates/*")
+
+	// Define the route for the index page and display the index.html template
+	// To start with, we'll use an inline route handler. Later on, we'll create
+	// standalone functions that will be used as route handlers.
+	router.GET("/home", func(c *gin.Context) {
+
+		// Call the HTML method of the Context to render a template
+		c.HTML(
+			// Set the HTTP status to 200 (OK)
+			http.StatusOK,
+			// Use the index.html template
+			"index.html",
+			// Pass the data that the page uses (in this case, 'title')
+			gin.H{
+				"title": "Home Page",
+			},
+		)
+
+	})
+
+	// Start serving the application
+	router.Run()
+
 }
