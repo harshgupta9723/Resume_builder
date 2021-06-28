@@ -28,7 +28,7 @@ func main() {
 			http.StatusOK,
 			// Use the index.html template
 			"index.html",
-			// Pass the data that the page uses (in this case, 'title')
+			// Pass the data that the page uses ('title')
 			gin.H{
 				"title": "Home Page",
 			},
