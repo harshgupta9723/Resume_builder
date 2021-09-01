@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>My Example</title>
+
+	<link rel="stylesheet" href="style.css">
+
+	</head>
+	<body>
+
+		<form class="myForm" method = 'POST'>
+		<p>
+			<label>Name
+			<input id="Name" type="text" name="customer_name" required>
+			</label> 
+		</p>
+
+		<p>
+			<label>Phone 
+			<input type="tel" name="phone_number">
+			</label>
+		</p>
+
+		<p>
+			<label>Email 
+			<input type="email" name="email_address">
+			</label>
+		</p>
+
+		<fieldset>
+			<legend>option_1</legend>
+			<p><label class="choice"> <input type="radio" name="taxi" required value="info_1"> info_1 </label></p>
+			<p><label class="choice"> <input type="radio" name="taxi" required value="info_2"> info_2 </label></p>
+			<p><label class="choice"> <input type="radio" name="taxi" required value="info_3"> info_3 </label></p>
+		</fieldset>
+
+		<fieldset>
+			<legend>option_2</legend>
+			<p><label class="choice"> <input type="checkbox" name="extras" value="info_1"> info_1 </label></p>
+			<p><label class="choice"> <input type="checkbox" name="extras" value="info_2"> info_2 </label></p>
+			<p><label class="choice"> <input type="checkbox" name="extras" value="info_3"> info_3 </label></p>
+		</fieldset>
+
+		<p>
+			<label>Special Instructions
+			<textarea name="comments" maxlength="500"></textarea>
+			</label>
+		</p>
+
+		<p><button type='submit' value='Submit Form' onclick='jsonResume()'>Submit Booking</button></p>
+
+		</form>
+
+		<script src="myJsonResume.js"></script>
+
+	</body>
+</html>
