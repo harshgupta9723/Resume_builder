@@ -20,41 +20,75 @@
 
 		<p>
 			<label>Phone 
-			<input type="tel" name="phone_number">
+			<input id="phone_number" type="tel" name="phone_number">
 			</label>
 		</p>
 
 		<p>
 			<label>Email 
-			<input type="email" name="email_address">
+			<input id="email" type="email" name="email_address">
 			</label>
 		</p>
 
 		<fieldset>
 			<legend>option_1</legend>
-			<p><label class="choice"> <input type="radio" name="taxi" required value="info_1"> info_1 </label></p>
-			<p><label class="choice"> <input type="radio" name="taxi" required value="info_2"> info_2 </label></p>
-			<p><label class="choice"> <input type="radio" name="taxi" required value="info_3"> info_3 </label></p>
+			<p><label class="choice"> <input  id="option_1" type="radio" name="taxi" required value="info_1"> info_1 </label></p>
+			<p><label class="choice"> <input  id="option_1" type="radio" name="taxi" required value="info_2"> info_2 </label></p>
+			<p><label class="choice"> <input  id="option_1" type="radio" name="taxi" required value="info_3"> info_3 </label></p>
 		</fieldset>
 
 		<fieldset>
 			<legend>option_2</legend>
-			<p><label class="choice"> <input type="checkbox" name="extras" value="info_1"> info_1 </label></p>
-			<p><label class="choice"> <input type="checkbox" name="extras" value="info_2"> info_2 </label></p>
-			<p><label class="choice"> <input type="checkbox" name="extras" value="info_3"> info_3 </label></p>
+			<p><label class="choice"> <input  id="option_2" type="checkbox" name="extras" value="info_1"> info_1 </label></p>
+			<p><label class="choice"> <input  id="option_2" type="checkbox" name="extras" value="info_2"> info_2 </label></p>
+			<p><label class="choice"> <input  id="option_2" type="checkbox" name="extras" value="info_3"> info_3 </label></p>
 		</fieldset>
 
 		<p>
-			<label>Special Instructions
-			<textarea name="comments" maxlength="500"></textarea>
+			<label> Special Instructions
+				<textarea id="instruction" name="comments" maxlength="500"></textarea>
 			</label>
 		</p>
 
-		<p><button type='submit' value='Submit Form' onclick='jsonResume()'>Submit Booking</button></p>
+		<button type='submit' value='Submit Form'>Submit Booking</button>
 
 		</form>
 
-		<script src="myJsonResume.js"></script>
+		<script>
+			
+			var name = document.getElementById("Name").value;
+			var phoneNumber = document.getElementById("phone_number").value;
+			var email = document.getElementById("email").value;
+			var option1 = document.getElementById("option_1").value;
+			var option2 = document.getElementById("option_2").value;
+			var instruction = document.getElementById("instruction").value;
+
+			const obj = {userName: name,
+						phone: phoneNumber,
+						email: email, 
+						option1: option1, 
+						option2: option2, 
+						instruction: instruction};
+
+			const myJSON = JSON.stringify(obj);
+
+			var data = new FormData();
+			data.append("myForm", myJSON);
+
+			var xhr = new XMLHttpRequest();
+			xhr.withCredentials = true;
+
+			xhr.addEventListener("readystatechange", function() {
+			if(this.readyState == 4) {
+				console.log(this.responseText);
+			}
+			});
+
+			xhr.open("POST", "http://127.0.0.1:5030/resume");
+
+			xhr.send(data);
+
+		</script>
 
 	</body>
 </html>
